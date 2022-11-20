@@ -6,9 +6,12 @@
 
 # Organisation
 This is split into three main branches:
+
     - Release: not sure what to do with this one yet
-    - Swift: swift version
-    - Python: python version
+    
+    - Swift: swift version \n
+    
+    - Python: python version \n
     
 # Credits
 - [Nathan](https://github.com/verygenericname)
