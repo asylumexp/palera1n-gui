@@ -9,9 +9,9 @@ This is split into three main branches:
 
     - Release: not sure what to do with this one yet
     
-    - Swift: swift version \n
+    - Swift: swift version 
     
-    - Python: python version \n
+    - Python: python version 
     
 # Credits
 - [Nathan](https://github.com/verygenericname)
