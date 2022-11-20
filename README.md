@@ -7,11 +7,10 @@
 # Organisation
 This is split into three main branches:
 
-    - Release: not sure what to do with this one yet
+    - Release: latest working branch
     
-    - Swift: swift version 
+    - Dev: dev version 
     
-    - Python: python version 
     
 # Credits
 - [Nathan](https://github.com/verygenericname)
