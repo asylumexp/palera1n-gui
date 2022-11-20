@@ -8,7 +8,6 @@
 import Cocoa
 
 class ViewController: NSViewController {
-    public var tweaks = NSButton()
     @IBOutlet weak var tweaksButton: NSButton!
     @IBOutlet weak var semitetheredButton: NSButton!
     @IBOutlet weak var dfuhelperButton: NSButton!
@@ -24,53 +23,89 @@ class ViewController: NSViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func tweaksChecked(_ sender: NSButton) {
-        tweaks = sender
-        sender.isEnabled = false
         if (sender.state.rawValue == 1) {
+            restorerootfsButton.isEnabled = false
+            dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
+            if checkValidity(buttons: restorerootfsButton) == true {
+                restorerootfsButton.isEnabled = true
+            }
+            if checkValidity(buttons: dfuhelperButton) == true {
+                dfuhelperButton.isEnabled = true
+            }
             print(sender.title, "off")
         }
     }
     @IBAction func semitetheredChecked(_ sender: NSButton) {
         if (sender.state.rawValue == 1) {
+            restorerootfsButton.isEnabled = false
+            dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
+            restorerootfsButton.isEnabled = true
+            if checkValidity(buttons: dfuhelperButton) == true {
+                dfuhelperButton.isEnabled = true
+            }
             print(sender.title, "off")
         }
     }
     @IBAction func dfuhelperChecked(_ sender: NSButton) {
         if (sender.state.rawValue == 1) {
+            restorerootfsButton.isEnabled = false
             print(sender.title, "on")
         } else {
+            restorerootfsButton.isEnabled = true
             print(sender.title, "off")
         }
     }
     @IBAction func skipfakefsChecked(_ sender: NSButton) {
         if (sender.state.rawValue == 1) {
+            restorerootfsButton.isEnabled = false
+            dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
+            restorerootfsButton.isEnabled = true
+            if checkValidity(buttons: dfuhelperButton) == true {
+                dfuhelperButton.isEnabled = true
+            }
             print(sender.title, "off")
         }
     }
     @IBAction func noinstallChecked(_ sender: NSButton) {
         if (sender.state.rawValue == 1) {
+            restorerootfsButton.isEnabled = false
+            dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
+            restorerootfsButton.isEnabled = true
+            if checkValidity(buttons: dfuhelperButton) == true {
+                dfuhelperButton.isEnabled = true
+            }
             print(sender.title, "off")
         }
     }
     @IBAction func nobasebandChecked(_ sender: NSButton) {
         if (sender.state.rawValue == 1) {
             print(sender.title, "on")
+            dfuhelperButton.isEnabled = false
         } else {
+            if checkValidity(buttons: dfuhelperButton) == true {
+                dfuhelperButton.isEnabled = true
+            }
             print(sender.title, "off")
         }
     }
     @IBAction func restorerootfsChecked(_ sender: NSButton) {
         if (sender.state.rawValue == 1) {
+            restorerootfsButton.isEnabled = false
+            dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
+            restorerootfsButton.isEnabled = true
+            if checkValidity(buttons: dfuhelperButton) == true {
+                dfuhelperButton.isEnabled = true
+            }
             print(sender.title, "off")
         }
     }
@@ -88,11 +123,25 @@ class ViewController: NSViewController {
             print(sender.title, "off")
         }
     }
+    func checkValidity(buttons: NSButton) -> Bool {
+        var bol = false
+        if buttons == dfuhelperButton {
+            if tweaksButton.state.rawValue == 0 && semitetheredButton.state.rawValue == 0 && skipfakefsButton.state.rawValue == 0 && noinstallButton.state.rawValue == 0 && nobasebandButton.state.rawValue == 0 && restorerootfsButton.state.rawValue == 0 {
+                dfuhelperButton.isEnabled = true
+            }
+            if buttons == restorerootfsButton {
+                if tweaksButton.state.rawValue == 0 && semitetheredButton.state.rawValue == 0 && skipfakefsButton.state.rawValue == 0 && noinstallButton.state.rawValue == 0 && nobasebandButton.state.rawValue == 0 && dfuhelperButton.state.rawValue == 0 {
+                    restorerootfsButton.isEnabled = true
+                }
+            }
+        }
+        return bol
+    }
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
-        
+
     }
 
 
