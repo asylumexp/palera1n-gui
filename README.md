@@ -2,7 +2,7 @@
     <img src="https://avatars.githubusercontent.com/u/114239186?s=100&v=4" alt="palera1n logo">
     <p>palera1n GUI</p>
 </h1>
-<h3 align="center">A WIP GUI for the palera1n jailbreak!</h3>
+<h3 align="center">A WIP Swift GUI for the palera1n jailbreak!</h3>
 
 # Organisation
 This is split into three main branches:
