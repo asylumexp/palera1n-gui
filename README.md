@@ -4,11 +4,12 @@
 </h1>
 <h3 align="center">A WIP GUI for the palera1n jailbreak!</h3>
 
-<h3> Organisation </h3>
+# Organisation
 This is split into three main branches:
     - Release: not sure what to do with this one yet
     - Swift: swift version
     - Python: python version
+    
 # Credits
 - [Nathan](https://github.com/verygenericname)
     - The ramdisk that dumps blobs, installs pogo to tips app, and duplicates rootfs is a slimmed down version of [SSHRD_Script](https://github.com/verygenericname/SSHRD_Script)
