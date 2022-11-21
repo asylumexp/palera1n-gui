@@ -28,12 +28,8 @@ class ViewController: NSViewController {
             dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
-            if checkValidity(buttons: restorerootfsButton) == true {
-                restorerootfsButton.isEnabled = true
-            }
-            if checkValidity(buttons: dfuhelperButton) == true {
-                dfuhelperButton.isEnabled = true
-            }
+            checkValidity(buttons: restorerootfsButton)
+            checkValidity(buttons: dfuhelperButton)
             print(sender.title, "off")
         }
     }
@@ -43,10 +39,8 @@ class ViewController: NSViewController {
             dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
-            restorerootfsButton.isEnabled = true
-            if checkValidity(buttons: dfuhelperButton) == true {
-                dfuhelperButton.isEnabled = true
-            }
+            checkValidity(buttons: restorerootfsButton)
+            checkValidity(buttons: dfuhelperButton)
             print(sender.title, "off")
         }
     }
@@ -55,7 +49,7 @@ class ViewController: NSViewController {
             restorerootfsButton.isEnabled = false
             print(sender.title, "on")
         } else {
-            restorerootfsButton.isEnabled = true
+            checkValidity(buttons: restorerootfsButton)
             print(sender.title, "off")
         }
     }
@@ -65,10 +59,8 @@ class ViewController: NSViewController {
             dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
-            restorerootfsButton.isEnabled = true
-            if checkValidity(buttons: dfuhelperButton) == true {
-                dfuhelperButton.isEnabled = true
-            }
+            checkValidity(buttons: restorerootfsButton)
+            checkValidity(buttons: dfuhelperButton)
             print(sender.title, "off")
         }
     }
@@ -78,10 +70,8 @@ class ViewController: NSViewController {
             dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
-            restorerootfsButton.isEnabled = true
-            if checkValidity(buttons: dfuhelperButton) == true {
-                dfuhelperButton.isEnabled = true
-            }
+            checkValidity(buttons: restorerootfsButton)
+            checkValidity(buttons: dfuhelperButton)
             print(sender.title, "off")
         }
     }
@@ -90,9 +80,7 @@ class ViewController: NSViewController {
             print(sender.title, "on")
             dfuhelperButton.isEnabled = false
         } else {
-            if checkValidity(buttons: dfuhelperButton) == true {
-                dfuhelperButton.isEnabled = true
-            }
+            checkValidity(buttons: dfuhelperButton)
             print(sender.title, "off")
         }
     }
@@ -102,10 +90,8 @@ class ViewController: NSViewController {
             dfuhelperButton.isEnabled = false
             print(sender.title, "on")
         } else {
-            restorerootfsButton.isEnabled = true
-            if checkValidity(buttons: dfuhelperButton) == true {
-                dfuhelperButton.isEnabled = true
-            }
+            checkValidity(buttons: restorerootfsButton)
+            checkValidity(buttons: dfuhelperButton)
             print(sender.title, "off")
         }
     }
@@ -124,18 +110,42 @@ class ViewController: NSViewController {
         }
     }
     func checkValidity(buttons: NSButton) -> Bool {
-        var bol = false
+        if buttons == tweaksButton {
+            if dfuhelperButton.state.rawValue == 0  && restorerootfsButton.state.rawValue == 0 {
+                tweaksButton.isEnabled = true
+            }
+        }
+        if buttons == semitetheredButton {
+            if dfuhelperButton.state.rawValue == 0  && restorerootfsButton.state.rawValue == 0 {
+                semitetheredButton.isEnabled = true
+            }
+        }
         if buttons == dfuhelperButton {
             if tweaksButton.state.rawValue == 0 && semitetheredButton.state.rawValue == 0 && skipfakefsButton.state.rawValue == 0 && noinstallButton.state.rawValue == 0 && nobasebandButton.state.rawValue == 0 && restorerootfsButton.state.rawValue == 0 {
                 dfuhelperButton.isEnabled = true
             }
-            if buttons == restorerootfsButton {
-                if tweaksButton.state.rawValue == 0 && semitetheredButton.state.rawValue == 0 && skipfakefsButton.state.rawValue == 0 && noinstallButton.state.rawValue == 0 && nobasebandButton.state.rawValue == 0 && dfuhelperButton.state.rawValue == 0 {
-                    restorerootfsButton.isEnabled = true
-                }
+        }
+        if buttons == skipfakefsButton {
+            if dfuhelperButton.state.rawValue == 0  && restorerootfsButton.state.rawValue == 0 {
+                skipfakefsButton.isEnabled = true
             }
         }
-        return bol
+        if buttons == noinstallButton {
+            if dfuhelperButton.state.rawValue == 0  && restorerootfsButton.state.rawValue == 0 {
+                noinstallButton.isEnabled = true
+            }
+        }
+        if buttons == nobasebandButton {
+            if dfuhelperButton.state.rawValue == 0  && restorerootfsButton.state.rawValue == 0 {
+                nobasebandButton.isEnabled = true
+            }
+        }
+        if buttons == restorerootfsButton {
+            if tweaksButton.state.rawValue == 0 && semitetheredButton.state.rawValue == 0 && skipfakefsButton.state.rawValue == 0 && noinstallButton.state.rawValue == 0 && nobasebandButton.state.rawValue == 0 && dfuhelperButton.state.rawValue == 0 {
+                restorerootfsButton.isEnabled = true
+            }
+        }
+        
     }
     override var representedObject: Any? {
         didSet {
